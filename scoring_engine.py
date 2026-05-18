@@ -122,8 +122,7 @@ def calculate_ats_metrics(job_text: str, cv_pdf_bytes: bytes) -> dict:
 
     # Розрахунок скілів
     s_score = skill_score(job_text, cv_text)
-    raw_score = (tfidf_score * 0.5 + s_score * 0.5) * 100
-    final_score = round(min(raw_score + 20, 100.0), 2)
+    final_score = round((tfidf_score * 0.5 + s_score * 0.5) * 100, 2)
 
     # Виявлення прогалин
     job_skills = extract_skills(job_text)
