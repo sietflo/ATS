@@ -87,7 +87,7 @@ def run_full_pipeline(job_text: str, cv_pdf_bytes: bytes) -> dict:
 
     # Етап 3: Формуємо фінальний "супер-JSON" для фронтенду
     final_response = {
-        "ats_score": scoring_payload["ats_score"] + 20,
+        "ats_score": scoring_payload["ats_score"],
         "missing_skills": scoring_payload["missing_skills"],
         "warning": scoring_payload["warning"],
         "ai_coaching": ai_report
