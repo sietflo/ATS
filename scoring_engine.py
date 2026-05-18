@@ -5,7 +5,10 @@ import joblib
 import pdfplumber
 from sklearn.metrics.pairwise import cosine_similarity
 
+#Хардкодинг
+
 SKILLS = [
+    # Languages
     "python", "javascript", "typescript", "java", "c++", 
     "c#", "ruby", "php", "go", "rust", 
     "swift", "kotlin", "scala", "r", "perl",
@@ -119,7 +122,8 @@ def calculate_ats_metrics(job_text: str, cv_pdf_bytes: bytes) -> dict:
 
     # Розрахунок скілів
     s_score = skill_score(job_text, cv_text)
-    final_score = round((tfidf_score * 0.5 + s_score * 0.5) * 100, 2)
+    raw_score = (tfidf_score * 0.5 + s_score * 0.5) * 100
+    final_score = round(min(raw_score + 20, 100.0), 2)
 
     # Виявлення прогалин
     job_skills = extract_skills(job_text)
