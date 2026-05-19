@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI, UploadFile, Form, File
 from fastapi.middleware.cors import CORSMiddleware
 
-# Імпортуємо твою функцію з файлу ai_coach.py
 from ai_coach import run_full_pipeline
 
 app = FastAPI(title="AI Resume Coach API")
